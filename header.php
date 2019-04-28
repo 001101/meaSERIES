@@ -12,6 +12,4 @@ echo '<div class="main"><div class="menu">';
 include "./gpanel.php";
 echo '</div><div class="content">';
 
-#$tmdb_api_key = 'fde5af48a46964a02e794bd35e081342';
-
 ?>

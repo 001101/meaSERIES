@@ -12,24 +12,7 @@ if ($inp != "") {
 
 	$seriearray = json_decode($inp, true);
 	$seriearray = array_reverse($seriearray, true);
-#	$broken = 0;
-#	foreach ($moviearray as $key => $movie) {
-#		if ( $movie['active'] == 0 ) {
-#			$broken++;
-#		}
-#	}
-#
-#	if ($broken != 0) {
-#		echo '<h1>Films sans source</h1><br>';
-#		foreach ($moviearray as $key => $movie) {
-#			if ( $movie['active'] == 0 ) {
-#				$json = json_decode(file_get_contents('http://api.themoviedb.org/3/movie/'.$movie['tmdb'].'?api_key='.$tmdb_api_key.'&language=fr&append_to_response=trailers,credits'), true);
-#				echo '<a href="./movie.php?id='.$key.'"><img title="'.ucfirst(urldecode($movie['title'])).' ('.$movie['year'].')" class="smallcover" src="http://image.tmdb.org/t/p/w154'.$json['poster_path'].'"></a>';
-#			}
-#		}
-#	echo '<br><br>';
-#	}
-#
+
 	$i = 0;
 	echo '<h1>Les 50 dernières séries</h1><br>';
 	foreach ($seriearray as $key => $serie) {
@@ -41,16 +24,6 @@ if ($inp != "") {
 		if(++$i > 50) break;
 	}
 }
-
-	echo '<br><br><br><h1>Ajouter un épisode</h1><br>';
-	echo '<form action="./add_episode.php" method="post"><select name="serie">';
-	$seriearray = json_decode($inp, true);
-	$seriearray = array_reverse($seriearray, true);
-	foreach ($seriearray as $key => $serie) {
-		echo '<option value="'.$key.'">'.ucfirst(urldecode($serie['title'])).'</option>';
-	}
-	echo '</select> <input type="text" placeholder="saison..." name="saison" size="4" value=""> <input type="text" placeholder="episode..." name="episode" value="" size="5" > <input type="text" placeholder="URL uptobox ou 1fichier..." name="url_file" value="" size="50"> <input id="submit" type="submit" name="submit" value="Ajouter"></form></br>';
-
 
 include("./footer.php");
 
