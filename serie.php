@@ -45,6 +45,7 @@ foreach ( $seriesarray[$_GET['id']]['episodes'] as $key => $saison ) {
 	echo '<h2>Saison '.$key.'</h2>';
 	$nb_saison ++;
 	$nb_episode = 0;
+	$key2 = 0;
 	foreach ( $seriesarray[$_GET['id']]['episodes'][$key] as $key2 => $episode ) {
 		$nb_episode++;
 		$url_file = "";
@@ -61,14 +62,14 @@ foreach ( $seriesarray[$_GET['id']]['episodes'] as $key => $saison ) {
 		}  
 		echo '</a>&nbsp;&nbsp;<input id="submit" type="submit" name="submit" value="Modifier / Vérifier"></form><form action="./delete_episode.php" method="post"> <input type="hidden" name="serie" value="'.$_GET['id'].'"> <input type="hidden" name="saison" value="'.$key.'"> <input type="hidden" name="episode" value="'.$key2.'"><input id="submit" type="submit" name="submit" value="Supprimer"></form>';
 	}
-	echo '<b>Ajouter un épisode</b>';
-	echo '<form action="./add_episode.php" method="post"><input type="hidden" name="page" value="serie"><input type="hidden" name="serie" value="'.$_GET['id'].'"><input type="hidden" name="saison" value="'.$key.'"> <input type="text" placeholder="episode..." name="episode" value="" size="5" > <input type="text" placeholder="URL uptobox ou 1fichier..." name="url_file" value="" size="50"> <input id="submit" type="submit" name="submit" value="Ajouter"></form></br>';
+	echo '<b>Ajouter l\'épisode</b>';
+	echo '<form action="./add_episode.php" method="post"><input type="hidden" name="page" value="serie"><input type="hidden" name="serie" value="'.$_GET['id'].'"><input type="hidden" name="saison" value="'.$key.'"> <input type="text" placeholder="episode..." name="episode" value="'.($key2+1).'" size="2" > <input type="text" placeholder="URL uptobox ou 1fichier..." name="url_file" value="" size="50"> <input id="submit" type="submit" name="submit" value="Ajouter"></form></br>';
 	if ( $nb_episode == 0 ) {
 		echo '<b><a href="./delete_saison.php?saison='.$key.'&serie='.$_GET['id'].'" onclick="return confirm(\'Voulez-vous vraiment effacer cette saison?\');">supprimer la saison</a></b></br></br>';
 	}
 }
 echo '<hr>';
-echo '<b>Ajouter une saison</b> <form action="./add_saison.php" method="post"><input type="hidden" name="serie" value="'.$_GET['id'].'"><input type="text" name="saison" placeholder="saison..." size="4"> <input id="submit" type="submit" name="submit" value="Ajouter"></form></br>';
+echo '<b>Ajouter la saison</b> <form action="./add_saison.php" method="post"><input type="hidden" name="serie" value="'.$_GET['id'].'"><input type="text" name="saison" placeholder="saison..." value="'.($key+1).'" size="2"> <input id="submit" type="submit" name="submit" value="Ajouter"></form></br>';
 if ( $nb_saison == 0 ) {
 	echo '<hr><h2><a href="./delete_serie.php?id='.$_GET['id'].'" onclick="return confirm(\'Voulez-vous vraiment effacer cette série?\');">supprimer la série</a></h2></br></br>';
 }

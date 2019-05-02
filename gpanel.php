@@ -9,6 +9,6 @@ echo '<a href="./years.php">par année</a></br>';
 
 echo '</br></br>';
 echo '<b>meaSERIES</b></br>';
-echo 'version 1.1.0</br>';
+echo 'version 1.1.1</br>';
 echo '&copy; Angelscry</br>';
 ?>
